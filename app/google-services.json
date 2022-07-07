@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "727844632960",
+    "project_id": "routetiplist",
+    "storage_bucket": "routetiplist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727844632960:android:b31ebbf83195a17b026965",
+        "android_client_info": {
+          "package_name": "com.example.routetiplist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727844632960-4ebcc8vca3jh2dn9hca7l3753ql9k6do.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa74ik3rJl83WfTqflgRXWlLtIFFLblCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727844632960-4ebcc8vca3jh2dn9hca7l3753ql9k6do.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RouteTipList</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submit">submit</string>
+</resources>
