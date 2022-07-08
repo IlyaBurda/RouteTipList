@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RouteTipList">
         <activity
-            android:name=".Registration"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Registration"
             android:exported="true">
+
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

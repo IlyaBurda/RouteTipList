@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">RouteTipList</string>
-    <string name="register">Register</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="submit">submit</string>
+    <string name="registration_name_header">Registration</string>
+    <string name="email_reg">Email</string>
+    <string name="password_reg">Password</string>
+    <string name="confirm_password_reg">Confirm Password</string>
+    <string name="submit_reg">submit</string>
+
+    <string name="email_log">Email</string>
+    <string name="password_log">Password</string>
+    <string name="submit_log">Submit</string>
+    <string name="login_name_header">Login</string>
 </resources>

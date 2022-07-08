@@ -7,8 +7,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
 
 class Registration : AppCompatActivity() {
@@ -29,7 +27,7 @@ class Registration : AppCompatActivity() {
         buttonReg = findViewById(R.id.register_button)
         mAuth = FirebaseAuth.getInstance()
         mUser = mAuth.currentUser
-        progressBar = findViewById(R.id.progressBar)
+        progressBar = findViewById(R.id.progressBar_reg)
         progressBar.visibility = View.INVISIBLE
 
         buttonReg.setOnClickListener {
@@ -62,8 +60,11 @@ class Registration : AppCompatActivity() {
                     ).show()
                 } else {
                     progressBar.visibility = View.INVISIBLE
-                    Toast.makeText(applicationContext, "${it.exception}", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(
+                        applicationContext,
+                        "${it.exception}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -75,14 +76,17 @@ class Registration : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        return Pattern.compile(
-            "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@"
-                    + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
-                    + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|"
-                    + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
-        ).matcher(email).matches()
+    companion object {
+        fun isEmailValid(email: String): Boolean {
+            return Pattern.compile(
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@"
+                        + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        + "[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|"
+                        + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
+            ).matcher(email).matches()
+        }
     }
+
 }
