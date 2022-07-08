@@ -7,64 +7,85 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.regex.Pattern
 
 class Registration : AppCompatActivity() {
-    lateinit var inputEmail: EditText
-    lateinit var inputPassword: EditText
-    lateinit var inputConfirmPassword: EditText
-    lateinit var buttonReg: Button
-    lateinit var progressBar: ProgressBar
-    private lateinit var mAuth: FirebaseAuth
-    var mUser: FirebaseUser? = null
+    lateinit var mInputName: EditText
+    lateinit var mInputEmail: EditText
+    lateinit var mInputPassword: EditText
+    lateinit var mInputConfirmPassword: EditText
+    lateinit var mButtonReg: Button
+    lateinit var mProgressBar: ProgressBar
+
+    lateinit var mAuth: FirebaseAuth
+    private var mUser: FirebaseUser? = null
+    private lateinit var userId: String
+    private lateinit var fStore: FirebaseFirestore
+//    private val TAG = Registration::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-        inputEmail = findViewById(R.id.input_email)
-        inputPassword = findViewById(R.id.input_password)
-        inputConfirmPassword = findViewById(R.id.input_confirm_password)
-        buttonReg = findViewById(R.id.register_button)
+        mInputName = findViewById(R.id.input_name)
+        mInputEmail = findViewById(R.id.input_email)
+        mInputPassword = findViewById(R.id.input_password)
+        mInputConfirmPassword = findViewById(R.id.input_confirm_password)
+        mButtonReg = findViewById(R.id.register_button)
+        mProgressBar = findViewById(R.id.progressBar_reg)
         mAuth = FirebaseAuth.getInstance()
         mUser = mAuth.currentUser
-        progressBar = findViewById(R.id.progressBar_reg)
-        progressBar.visibility = View.INVISIBLE
-
-        buttonReg.setOnClickListener {
+        fStore = FirebaseFirestore.getInstance()
+        mProgressBar.visibility = View.INVISIBLE
+        mButtonReg.setOnClickListener {
             perforAuth()
         }
     }
 
     private fun perforAuth() {
-        var email = inputEmail.text.toString()
-        var password = inputPassword.text.toString()
-        var confirmPassword = inputConfirmPassword.text.toString()
+        var email = mInputEmail.text.toString()
+        var password = mInputPassword.text.toString()
+        var confirmPassword = mInputConfirmPassword.text.toString()
+        var name = mInputName.text.toString().trim()
 
-        if (!isEmailValid(email)) {
-            inputEmail.error = "Enter context email"
+        if (name.isEmpty()) {
+            mInputName.error = "This field is empty"
+        } else if (!isEmailValid(email)) {
+            mInputEmail.error = "Enter context email"
         } else if (password.isEmpty() || password.length < 6) {
-            inputPassword.error = "Enter proper password"
+            mInputPassword.error = "Enter proper password"
         } else if (password != confirmPassword) {
-            inputConfirmPassword.error = "Password not match Both field"
+            mInputConfirmPassword.error = "Password not match Both field"
         } else {
-            progressBar.visibility = View.VISIBLE
+            mProgressBar.visibility = View.VISIBLE
 
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    progressBar.visibility = View.INVISIBLE
+                    userId = mAuth.currentUser!!.uid
+                    var ref: DocumentReference = fStore.collection("users").document(userId)
+                    var user = hashMapOf(
+                        "name" to name,
+                        "email" to email
+                    )
+                    ref.set(user).addOnSuccessListener {
+//                        Log.d(TAG, "onSuccess: user Profile is created for $userId")
+                        Toast.makeText(applicationContext, "All is good", Toast.LENGTH_SHORT).show()
+                    }
                     sendUserToNextActivity()
                     Toast.makeText(
                         applicationContext,
                         "Registration Successful",
                         Toast.LENGTH_SHORT
                     ).show()
+                    mProgressBar.visibility = View.INVISIBLE
                 } else {
-                    progressBar.visibility = View.INVISIBLE
                     Toast.makeText(
                         applicationContext,
                         "${it.exception}",
                         Toast.LENGTH_SHORT
                     ).show()
+                    mProgressBar.visibility = View.GONE
                 }
             }
         }

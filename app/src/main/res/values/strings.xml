@@ -1,13 +1,27 @@
 <resources>
     <string name="app_name">RouteTipList</string>
+
+    <!--Registration activity-->
     <string name="registration_name_header">Registration</string>
+    <string name="name_reg">Name</string>
     <string name="email_reg">Email</string>
     <string name="password_reg">Password</string>
     <string name="confirm_password_reg">Confirm Password</string>
     <string name="submit_reg">submit</string>
 
+    <!--Login activity-->
+    <string name="login_name_header">Login</string>
     <string name="email_log">Email</string>
     <string name="password_log">Password</string>
     <string name="submit_log">Submit</string>
-    <string name="login_name_header">Login</string>
+
+    <!--Profile activity-->
+    <string name="profile_name_header">Profile</string>
+    <string name="name_profile">Name</string>
+    <string name="email_profile">Email</string>
+    <string name="your_city_profile">Your city</string>
+    <string name="start_your_day_profile">When you start your day?</string>
+    <string name="end_your_day_profile">When you end your day?</string>
+    <string name="submit_changes_profile">Submit Changes</string>
+    <string name="change_password_profile">Change password</string>
 </resources>

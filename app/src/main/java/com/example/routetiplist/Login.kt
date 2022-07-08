@@ -12,6 +12,7 @@ import com.example.routetiplist.Registration.Companion.isEmailValid
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
+
 class Login : AppCompatActivity() {
     lateinit var inputEmail: EditText
     lateinit var inputPassword: EditText
@@ -49,20 +50,21 @@ class Login : AppCompatActivity() {
         }
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
-                progressBar.visibility = View.INVISIBLE
                 sendUserToNextActivity()
                 Toast.makeText(
                     applicationContext,
                     "Login Successful",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else {
                 progressBar.visibility = View.INVISIBLE
+            } else {
+
                 Toast.makeText(
                     applicationContext,
                     "${it.exception}",
                     Toast.LENGTH_SHORT
                 ).show()
+                progressBar.visibility = View.GONE
             }
         }
     }

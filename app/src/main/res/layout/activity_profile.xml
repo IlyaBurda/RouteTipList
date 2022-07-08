@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+    <EditText
+        android:id="@+id/yourCity_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/your_city_profile"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/email_profile"
+        app:layout_constraintTop_toBottomOf="@+id/email_profile" />
+
+    <EditText
+        android:id="@+id/startDay_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/start_your_day_profile"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/yourCity_profile"
+        app:layout_constraintTop_toBottomOf="@+id/yourCity_profile" />
+
+    <EditText
+        android:id="@+id/endDay_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="@string/end_your_day_profile"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/startDay_profile"
+        app:layout_constraintTop_toBottomOf="@+id/startDay_profile" />
+
+    <TextView
+        android:id="@+id/profile_textvView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:text="@string/profile_name_header"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/name_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="81dp"
+        android:ems="10"
+        android:hint="@string/name_profile"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_textvView" />
+
+    <EditText
+        android:id="@+id/email_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/email_profile"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/name_profile"
+        app:layout_constraintTop_toBottomOf="@+id/name_profile" />
+
+    <Button
+        android:id="@+id/submitChanges_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/submit_changes_profile"
+        app:layout_constraintEnd_toStartOf="@+id/endDay_profile"
+        app:layout_constraintStart_toStartOf="@+id/endDay_profile"
+        app:layout_constraintTop_toBottomOf="@+id/endDay_profile" />
+
+    <Button
+        android:id="@+id/changePassword_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:text="@string/change_password_profile"
+        app:layout_constraintBaseline_toBaselineOf="@+id/submitChanges_button"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
